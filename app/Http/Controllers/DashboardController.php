@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        dd('hai admin');
+        return view('dashboard');
     }
 }

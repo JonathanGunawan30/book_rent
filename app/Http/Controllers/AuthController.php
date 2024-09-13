@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'username' => ['required', 'max:255', 'unique:users', 'min:3'],
-            'password' => ['required', 'max:255', 'min:8'],
+            'password' => ['required', 'max:255', 'min:6'],
             'phone' => ['nullable','max:20','min:5', 'regex:/^\d+$/'],
             'address' => ['required', 'max:255', 'min:3'],
         ]);
@@ -51,8 +51,8 @@ class AuthController extends Controller
     public function authenticating (Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required', 'max:100'],
-            'password' => ['required', 'max:100'],
+            'username' => ['required', 'max:255', 'min:3'],
+            'password' => ['required', 'max:255', 'min:6'],
         ]);
 
         if (Auth::attempt($credentials)) {

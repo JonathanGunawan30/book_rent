@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function profile(Request $request)
     {
-        dd('hai kimi');
+        return view('profile');
     }
 }
