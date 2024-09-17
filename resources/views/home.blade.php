@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title', 'Profile')
+@section('title', 'Books')
 
 @section('content')
 
-    <h2 class="text-2xl font-bold mb-4">Welcome to the Profile Page</h2>
+    <h2 class="text-2xl font-bold mb-4">Welcome to the Books Page</h2>
     <p class="text-gray-700">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat officia necessitatibus a at maiores, libero
         adipisci maxime? Voluptatum ullam voluptatem explicabo recusandae cum, dolorum suscipit commodi voluptate
@@ -17,4 +17,3 @@
     </p>
 
 @endsection
-

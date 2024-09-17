@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        dd('ini halaman home');
+        return view('home');
 
     }
 }

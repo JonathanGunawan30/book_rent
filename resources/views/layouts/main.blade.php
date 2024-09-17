@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rental Buku | @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 </head>
 <body class="bg-gray-100">
 
@@ -24,33 +27,56 @@
         <div class="p-4">
             <ul class="space-y-4">
                 @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1)
-                <li>
-                    <a href="dashboard" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Dashboard</a>
-                </li>
-                <li>
-                    <a href="home" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Books</a>
-                </li>
-                <li>
-                    <a href="#" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Categories</a>
-                </li>
-                <li>
-                    <a href="#" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Users</a>
-                </li>
-                <li>
-                    <a href="#" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Rent Log</a>
-                </li>
-                <li>
-                    <a href="logout" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Logout</a>
-                </li>
+                    <li>
+                        <a href="dashboard"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('dashboard') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="home"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('home') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="categories"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('categories') ||  request()->is('category/*') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Categories
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('users') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="rent-logs"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('rent-logs') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Rent Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logout"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('logout') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Logout
+                        </a>
+                    </li>
                 @else
                     <li>
-                        <a href="profile" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Profile</a>
+                        <a href="profile"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('profile') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Profile
+                        </a>
                     </li>
                     <li>
-                        <a href="logout" class="block text-lg font-semibold hover:bg-gray-700 p-2 rounded">Logout</a>
+                        <a href="logout"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('logout') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                            Logout
+                        </a>
                     </li>
                 @endif
-
             </ul>
         </div>
     </aside>
@@ -62,8 +88,9 @@
         </div>
     </main>
 
+    @yield('scripts')
+
 </div>
 
 </body>
 </html>
-

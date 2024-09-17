@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('dashboard');
+        $bookCount = Book::count();
+        $categoryCount = Category::count();
+        $userCount = User::count();
+        return view('dashboard', ['bookCount' => $bookCount, 'categoryCount' => $categoryCount, 'userCount' => $userCount]);
     }
 }

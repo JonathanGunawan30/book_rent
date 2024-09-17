@@ -27,9 +27,26 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => ['auth', 'onlyActiveUser']], function () {
     Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->middleware('onlyAdmin');
+
     Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->middleware('onlyClient');
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'home']);
+
+    Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'categories']);
+    Route::get('/category/add', [App\Http\Controllers\CategoryController::class, 'add']);
+    Route::post('/category/add', [App\Http\Controllers\CategoryController::class, 'addProcess']);
+    Route::get('/category/edit/{slug}', [App\Http\Controllers\CategoryController::class, 'edit']);
+    Route::put('/category/edit/{slug}', [App\Http\Controllers\CategoryController::class, 'update']);
+    Route::get('/category/delete/{slug}', [App\Http\Controllers\CategoryController::class, 'delete']);
+    Route::get('/category/deleted', [App\Http\Controllers\CategoryController::class, 'deleted']);
+    Route::get('/category/restore/{slug}', [App\Http\Controllers\CategoryController::class, 'restore']);
+
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'users']);
+
+    Route::get('/rent-logs', [App\Http\Controllers\RentLogController::class, 'rentLogs']);
+
 });
 
 
