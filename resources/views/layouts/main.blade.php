@@ -28,50 +28,50 @@
             <ul class="space-y-4">
                 @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1)
                     <li>
-                        <a href="dashboard"
+                        <a href="/dashboard"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('dashboard') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="home"
-                           class="block text-lg font-semibold p-2 rounded {{ request()->is('home') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                        <a href="/home"
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('home') || request()->is('book/*') || request()->is('home/*')   ?  'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Books
                         </a>
                     </li>
                     <li>
-                        <a href="categories"
+                        <a href="/categories"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('categories') ||  request()->is('category/*') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Categories
                         </a>
                     </li>
                     <li>
-                        <a href="users"
+                        <a href="/users"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('users') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Users
                         </a>
                     </li>
                     <li>
-                        <a href="rent-logs"
+                        <a href="/rent-logs"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('rent-logs') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Rent Log
                         </a>
                     </li>
                     <li>
-                        <a href="logout"
+                        <a href="/logout"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('logout') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Logout
                         </a>
                     </li>
                 @else
                     <li>
-                        <a href="profile"
+                        <a href="/profile"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('profile') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Profile
                         </a>
                     </li>
                     <li>
-                        <a href="logout"
+                        <a href="/logout"
                            class="block text-lg font-semibold p-2 rounded {{ request()->is('logout') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Logout
                         </a>

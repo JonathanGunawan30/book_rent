@@ -15,8 +15,6 @@
                     </ul>
                 </div>
             @endif
-
-
         </div>
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="p-8">
@@ -27,7 +25,7 @@
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Category Name</label>
                         <input type="text" name="name" id="name"
                                class="shadow-sm focus:ring-indigo-500 focus:border-transparent block w-full sm:text-sm border-gray-300 rounded-md py-4 px-4"
-                               placeholder="Enter category name" required>
+                               placeholder="Enter category name" required autofocus>
                     </div>
                     <div class="flex items-center justify-between">
                         <button type="submit"
@@ -41,7 +39,5 @@
         </div>
     </div>
 
+
 @endsection
-
-
-

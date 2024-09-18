@@ -33,6 +33,14 @@ Route::group(['middleware' => ['auth', 'onlyActiveUser']], function () {
     Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->middleware('onlyClient');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'home']);
+    Route::get('/book/add', [App\Http\Controllers\HomeController::class, 'add']);
+    Route::post('/book/add', [App\Http\Controllers\HomeController::class, 'addBook']);
+    Route::get('/book/edit/{slug}', [App\Http\Controllers\HomeController::class, 'editBook']);
+    Route::put('/book/update/{slug}', [App\Http\Controllers\HomeController::class, 'updateBook']);
+    Route::get('/book/delete/{slug}', [App\Http\Controllers\HomeController::class, 'deleteBook']);
+    Route::get('/book/deleted', [App\Http\Controllers\HomeController::class, 'deletedBook']);
+    Route::get('/book/restore/{slug}', [App\Http\Controllers\HomeController::class, 'restoreBook']);
+
 
     Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'categories']);
     Route::get('/category/add', [App\Http\Controllers\CategoryController::class, 'add']);

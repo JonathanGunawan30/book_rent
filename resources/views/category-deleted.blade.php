@@ -35,7 +35,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $category->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 space-x-2">
                                 <!-- Tombol Restore -->
-                                <a href="javascript:void(0);" data-id="{{ $category->slug }}" class="restore-btn inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600">
+                                <a href="javascript:void(0);" data-id="{{ $category->slug }}" class="restore-btn inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600">
                                     Restore
                                 </a>
                             </td>

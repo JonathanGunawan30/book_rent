@@ -42,6 +42,14 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var input = document.getElementById('name');
+            input.focus();
+            input.setSelectionRange(input.value.length, input.value.length);
+        });
+    </script>
+
 @endsection
 
 
