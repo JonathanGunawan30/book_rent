@@ -26,7 +26,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => ['auth', 'onlyActiveUser']], function () {
-    Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
 
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->middleware('onlyAdmin');
 
@@ -52,6 +52,13 @@ Route::group(['middleware' => ['auth', 'onlyActiveUser']], function () {
     Route::get('/category/restore/{slug}', [App\Http\Controllers\CategoryController::class, 'restore']);
 
     Route::get('/users', [App\Http\Controllers\UserController::class, 'users']);
+    Route::get('/users/registered', [App\Http\Controllers\UserController::class, 'userRegistered']);
+    Route::get('/users/detail/{slug}', [App\Http\Controllers\UserController::class, 'userDetail']);
+    Route::get('/users/{slug}/approve', [App\Http\Controllers\UserController::class, 'userApprove']);
+    Route::get('/users/{slug}/deactivate', [App\Http\Controllers\UserController::class, 'userDeactivate']);
+    Route::get('/users/{slug}/delete', [App\Http\Controllers\UserController::class, 'userDelete']);
+    Route::get('/users/deleted', [App\Http\Controllers\UserController::class, 'userDeleted']);
+    Route::get('/users/{slug}/restore', [App\Http\Controllers\UserController::class, 'userRestore']);
 
     Route::get('/rent-logs', [App\Http\Controllers\RentLogController::class, 'rentLogs']);
 

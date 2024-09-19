@@ -8,7 +8,7 @@
         <div class="flex justify-between items-center p-4 bg-gray-50 border-b">
             <h3 class="text-xl font-semibold">Deleted Book</h3>
             <div>
-                <a href="/home" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600">
+                <a href="/home" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
                     Back
                 </a>
             </div>
@@ -116,6 +116,32 @@
                         window.location.href = `/book/restore/${bookSlug}`;
                     }
                 })
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Event listener for "more" and "less" links
+            document.querySelectorAll('.more-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    const parentRow = this.closest('tr');
+                    const previewCategories = parentRow.querySelector('.categories-preview');
+                    const moreCategories = parentRow.querySelector('.categories-more');
+
+                    const isHidden = moreCategories.classList.contains('hidden');
+
+                    if (isHidden) {
+                        // Show more categories
+                        previewCategories.classList.add('hidden');
+                        moreCategories.classList.remove('hidden');
+                        this.textContent = 'Less'; // Update text for "less"
+                    } else {
+                        // Show fewer categories
+                        previewCategories.classList.remove('hidden');
+                        moreCategories.classList.add('hidden');
+                        const totalCategories = parentRow.querySelectorAll('.categories-more .category-group span').length;
+                        this.textContent = `+${totalCategories - 5} more`; // Update text dynamically
+                    }
+                });
             });
         });
     </script>

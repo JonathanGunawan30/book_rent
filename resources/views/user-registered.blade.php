@@ -6,15 +6,15 @@
 
     <div class="bg-white rounded-xl mt-8 shadow-lg overflow-hidden mx-auto max-w-screen-xl">
         <div class="flex justify-between items-center p-4 bg-gray-50 border-b">
-            <h3 class="text-xl font-semibold">User List</h3>
+            <h3 class="text-xl font-semibold">New User Registered List</h3>
             <div class="space-x-2">
                 <a href="/users/deleted"
                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                     View Deleted User
                 </a>
-                <a href="/users/registered"
-                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600">
-                    New Registered User
+                <a href="/users"
+                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                    Back
                 </a>
             </div>
         </div>
@@ -85,17 +85,6 @@
                 title: "Success!",
                 text: "{{ session('success') }}",
                 icon: "success",
-                confirmButtonColor: '#4F46E5'
-            });
-        </script>
-    @endif
-
-    @if(session ('error'))
-        <script>
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "{{session('error')}}",
                 confirmButtonColor: '#4F46E5'
             });
         </script>

@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $bookCount = Book::count();
         $categoryCount = Category::count();
-        $userCount = User::count();
+        $userCount = User::where('role_id', 2)->where('status', 'active')->count();
         return view('dashboard', ['bookCount' => $bookCount, 'categoryCount' => $categoryCount, 'userCount' => $userCount]);
     }
 }

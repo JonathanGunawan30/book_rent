@@ -6,15 +6,12 @@
 
     <div class="bg-white rounded-xl mt-8 shadow-lg overflow-hidden mx-auto max-w-screen-xl">
         <div class="flex justify-between items-center p-4 bg-gray-50 border-b">
-            <h3 class="text-xl font-semibold">User List</h3>
+            <h3 class="text-xl font-semibold">User Deleted</h3>
             <div class="space-x-2">
-                <a href="/users/deleted"
-                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                    View Deleted User
-                </a>
-                <a href="/users/registered"
-                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600">
-                    New Registered User
+
+                <a href="{{url()->previous()}}"
+                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                    Back
                 </a>
             </div>
         </div>
@@ -59,13 +56,10 @@
                             <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$user->address}}</td>
                             <td class="px-4 py-4 whitespace-nowrap text-sm font-medium {{$user->status == 'active' ? 'text-green-500' : 'text-red-500'}}">{{$user->status}}</td>
                             <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500 space-x-2">
-                                <a href="/users/detail/{{$user->slug}}"
-                                   class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Detail
-                                </a>
+
                                 <a href="javascript:void(0);" data-id="{{$user->slug}}"
-                                   class="delete-btn inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                    Delete
+                                   class="delete-btn inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    Restore
                                 </a>
                             </td>
                         </tr>
@@ -107,15 +101,15 @@
                 const userSlug = this.getAttribute('data-id');
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    text: "This category will be restored!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#1d4ed8',
+                    confirmButtonColor: '#2563eb',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, restore it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = `/users/${userSlug}/delete`;
+                        window.location.href = `/users/${userSlug}/restore`;
                     }
                 })
             });

@@ -47,7 +47,7 @@
                     </li>
                     <li>
                         <a href="/users"
-                           class="block text-lg font-semibold p-2 rounded {{ request()->is('users') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                           class="block text-lg font-semibold p-2 rounded {{ request()->is('users') || request()->is('users/*') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                             Users
                         </a>
                     </li>
