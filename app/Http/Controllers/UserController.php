@@ -6,6 +6,8 @@ use App\Models\RentLogs;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -113,5 +115,50 @@ class UserController extends Controller
         }
         return redirect('/users')->with('success', 'User restored successfully');
     }
+
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('edit-profile', ['user' => $user]);
+    }
+
+    public function editProfilePUT(Request $request)
+    {
+        $id = Auth::user()->id;
+
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'username' => ['required', 'max:255', 'min:3',  Rule::unique('users')->ignore($user->id)],
+            'phone' => ['nullable','max:20','min:5', 'regex:/^\d+$/'],
+            'address' => ['required', 'max:255', 'min:3'],
+        ]);
+
+        $user = Auth::user();
+        $phone = preg_replace('/\D/', '', $request->phone);
+        $user->update(array_merge($request->except('phone'), ['phone' => $phone]));
+
+        return redirect('/profile')->with('success', 'Profile updated successfully');
+    }
+
+    public function changePassword()
+    {
+        return view('change-password');
+    }
+
+    public function changePasswordPOST(Request $request)
+    {
+        $request->validate([
+            'new_password' => 'required|max:255|min:6',
+            'confirm_password' => 'required|max:255|min:6|same:new_password',
+        ]);
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+
+        return redirect('/profile')->with('success', 'Password updated successfully');
+    }
+
 
 }

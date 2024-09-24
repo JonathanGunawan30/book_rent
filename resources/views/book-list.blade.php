@@ -109,15 +109,7 @@
                         {{$book->status}}
                     </span>
 
-                                @if($book->status == 'in stock')
-                                    <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-600 transform hover:scale-110 transition duration-300 ease-in-out">
-                                        Borrow
-                                    </button>
-                                @else
-                                    <button class="bg-indigo-500 text-white px-4 py-2 rounded opacity-50 cursor-not-allowed focus:outline-none focus:ring focus:ring-indigo-300" disabled>
-                                        Borrow
-                                    </button>
-                                @endif
+
                             </div>
                         </div>
                     </div>

@@ -27,6 +27,10 @@ Route::group(['middleware' => ['auth', 'onlyActiveUser']], function () {
     Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
 
     Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->middleware('onlyClient');
+    Route::get('/profile/edit', [App\Http\Controllers\UserController::class, 'editProfile'])->middleware('onlyClient');
+    Route::put('/profile/edit', [App\Http\Controllers\UserController::class, 'editProfilePUT'])->middleware('onlyClient');
+    Route::get('/profile/change_password', [App\Http\Controllers\UserController::class, 'changePassword'])->middleware('onlyClient');
+    Route::post('/profile/change_password', [App\Http\Controllers\UserController::class, 'changePasswordPOST'])->middleware('onlyClient');
 
     Route::group(['middleware' => ['onlyAdmin']], function () {
         Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);

@@ -79,7 +79,7 @@
                     @else
                         <li>
                             <a href="/profile"
-                               class="block text-lg font-semibold p-2 rounded {{ request()->is('profile') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                               class="block text-lg font-semibold p-2 rounded {{ request()->is('profile') || request()->is('profile/*')  ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                                 Profile
                             </a>
                         </li>
