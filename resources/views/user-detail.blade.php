@@ -75,6 +75,10 @@
         </div>
     </div>
 
+    <div>
+        <x-rent-log-table :rentLogs="$rentLogs" />
+    </div>
+
 @endsection
 
 @section('scripts')

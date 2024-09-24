@@ -130,11 +130,13 @@
 @section('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        let uuid = crypto.randomUUID();
+
         $('#search').on('input', function() {
             var query = $(this).val();
             if(query.length >= 2) {
                 $.ajax({
-                    url: '{{ route("books.search") }}',
+                    url: '/books/search/' + uuid ,
                     method: 'GET',
                     data: { query: query },
                     success: function(response) {

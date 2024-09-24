@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\PublicController::class, 'index'])->name('books.index');
-Route::get('/books/search/alskdjfasdoew/ldaskkf', [App\Http\Controllers\PublicController::class, 'search'])->name('books.search');
+Route::get('/books/search/{uuid}', [App\Http\Controllers\PublicController::class, 'search'])->where('uuid', '[0-9a-fA-F\-]{36}');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
@@ -58,6 +58,9 @@ Route::group(['middleware' => ['auth', 'onlyActiveUser']], function () {
         Route::get('/users/{slug}/delete', [App\Http\Controllers\UserController::class, 'userDelete']);
         Route::get('/users/deleted', [App\Http\Controllers\UserController::class, 'userDeleted']);
         Route::get('/users/{slug}/restore', [App\Http\Controllers\UserController::class, 'userRestore']);
+
+        Route::get('/books/rent', [App\Http\Controllers\BookRentController::class, 'index']);
+        Route::post('/books/rent', [App\Http\Controllers\BookRentController::class, 'store']);
 
         Route::get('/rent-logs', [App\Http\Controllers\RentLogController::class, 'rentLogs']);
     });

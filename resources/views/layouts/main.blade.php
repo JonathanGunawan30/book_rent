@@ -65,6 +65,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/books/rent"
+                               class="block text-lg font-semibold p-2 rounded {{ request()->is('books/*') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
+                                Book Rent
+                            </a>
+                        </li>
+                        <li>
                             <a href="/logout"
                                class="block text-lg font-semibold p-2 rounded {{ request()->is('logout') ? 'bg-indigo-500 text-white' : 'hover:bg-gray-700 hover:text-white' }}">
                                 Logout
